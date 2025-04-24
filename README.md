@@ -1,59 +1,50 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Foottv Live</title>
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+   <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type='text/javascript' src='//pl26330988.profitableratecpm.com/31/36/42/3136423ba8e56051368cedef08742e2e.js'></script>
+    <meta name="google-adsense-account" content="ca-pub-8844814343940019">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VPG9TX4KHJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VPG9TX4KHJ');
+</script>
+  <script type='text/javascript' src='//pl26330988.profitableratecpm.com/31/36/42/3136423ba8e56051368cedef08742e2e.js'></script>
   <style>
-    body, html {
+    html, body {
       margin: 0;
       padding: 0;
-      background: #000;
+      background-color: black;
       height: 100%;
       overflow: hidden;
     }
-    #video {
-      width: 100%;
+    video {
+      width: 100vw;
       height: 100vh;
-      object-fit: cover;
+      object-fit: contain;
+      background-color: black;
     }
-    .overlay {
+    #qualitySelector {
       position: absolute;
       top: 10px;
       left: 10px;
-      z-index: 1000;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-    .overlay img {
-      width: 40px;
-      height: 40px;
-    }
-    .overlay a, .overlay button {
+      z-index: 999;
+      background: rgba(0, 0, 0, 0.7);
       color: white;
-      background: rgba(0,0,0,0.6);
-      border: none;
-      padding: 5px 10px;
+      padding: 5px;
       border-radius: 5px;
-      text-decoration: none;
-      font-size: 14px;
-      cursor: pointer;
-    }
-    .overlay a:hover, .overlay button:hover {
-      background: rgba(255,255,255,0.1);
     }
   </style>
 </head>
 <body>
-  <div class="overlay">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Football_Logo.svg/1024px-Football_Logo.svg.png" alt="Logo">
-    <a href="https://foottv.info" target="_blank">زورونا: foottv.info</a>
-    <button onclick="shareTeam()">مشاركة الفريق</button>
-    <button onclick="refreshVideo()">تحديث الفيديو</button>
-  </div>
-
+ 
   <video id="video" controls autoplay></video>
 
   <div >
