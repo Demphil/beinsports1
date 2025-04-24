@@ -56,31 +56,47 @@
 
   <video id="video" controls autoplay></video>
 
-  <script>
-    const streamURL = "[ضع_رابط_m3u8_ديالك_هنا](https://stream.sainaertebat.com/hls2/bein1.m3u8)";
+  <div >
+  <video id="video" controls autoplay width="100%"></video>
+  <div style="position: absolute; bottom: 40px; left: 25%; width: 19%; height: 33px; background: GREEN; opacity: 0.1;"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script>
+  var video = document.getElementById('video');
+  var container = document.getElementById('videoContainer');
+  var overlay = document.getElementById('videoOverlay');
 
-    function loadStream() {
-      const video = document.getElementById('video');
-      if (Hls.isSupported()) {
-        const hls = new Hls();
-        hls.loadSource(streamURL);
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
-      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.src = streamURL;
-        video.addEventListener('loadedmetadata', () => video.play());
+  if (Hls.isSupported()) {
+    var hls = new Hls();
+    hls.loadSource('https://stream.sainaertebat.com/hls2/bein1.m3u8');
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED, function () {
+      video.play();
+    });
+  } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    video.src = 'https://stream.sainaertebat.com/hls2/bein1.m3u8';
+    video.addEventListener('loadedmetadata', function () {
+      video.play();
+    });
+  }
+
+  // التعامل مع fullscreen
+  function appendOverlayToFullscreen() {
+    setTimeout(() => {
+      const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement;
+      if (fullscreenElement && fullscreenElement.tagName === 'VIDEO') {
+        fullscreenElement.parentElement.appendChild(overlay);
+        overlay.style.position = 'fixed';
+      } else if (fullscreenElement && fullscreenElement.id === 'videoContainer') {
+        container.appendChild(overlay);
+        overlay.style.position = 'absolute';
       }
-    }
+    }, 300);
+  }
 
-    function shareTeam() {
-      alert("شارك رابط الفريق مع أصدقائك!");
-    }
+  document.addEventListener('fullscreenchange', appendOverlayToFullscreen);
+  document.addEventListener('webkitfullscreenchange', appendOverlayToFullscreen);
+</script>
 
-    function refreshVideo() {
-      location.reload();
-    }
-
-    window.onload = loadStream;
-  </script>
 </body>
 </html>
